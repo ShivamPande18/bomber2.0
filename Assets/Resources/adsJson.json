@@ -1,0 +1,24 @@
+{
+    "AdsInfo" : [ 
+        {
+            "GameName" : "RPS",
+            "BubbleWidth" : 128,
+            "BubbleHight" : 128,
+            "BubbleUrl" : "https://gameeon.in/html5/repo/AdsInfo/img1",
+            "ImgWidth" : 128,
+            "ImgHight" : 128,
+            "ImgUrl" : "https://gameeon.in/html5/repo/AdsInfo/img1",
+            "GameUrl" : "https://play.google.com/store/apps/details?id=gameeon.nagames.rockpaperscissor"
+        },
+        {
+            "GameName" : "BrickBlaster",
+            "BubbleWidth" : 128,
+            "BubbleHight" : 128,
+            "BubbleUrl" : "https://gameeon.in/html5/repo/AdsInfo/img1",
+            "ImgWidth" : 128,
+            "ImgHight" : 128,
+            "ImgUrl" : "https://gameeon.in/html5/repo/AdsInfo/img2",
+            "GameUrl" : "https://play.google.com/store/apps/details?id=com.gameeon.brickblaster"
+        } 
+    ]
+}

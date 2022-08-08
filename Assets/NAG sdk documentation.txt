@@ -1,0 +1,178 @@
+====NA Games SDK Documentation====
+
+General Overview =>
+
+*The SDK is to be implemented for the game to be published under the NA Games Brand.
+*The developer must keep a backup of the existing project before implementing the sdk, so as to be safe from any new potential errors/bugs.
+*The SDK has 3 main parts to be implemented =>
+                 1) Cross promo button and splash screen
+	2) Gameanalytics
+	3) Google Admob
+*Given below is a step-by-step guide for implementation of these 3 main parts.
+
+*NOTE - If you have any ad network(like google admob/ unity ads) pre - integrated in your project, contact us first.
+
+==== PRE - REQUISITES ====
+
+*Before staring on the implementation, please make sure that all of these are in place.
+*STEP 1 - Import the SDK from the link given.
+*STEP 2 - Import the Google Admob plugin for unity(if you already have it imported, you're free to skip this step).
+
+-To do so, go to the following link => https://github.com/googleads/googleads-mobile-unity/releases/tag/v5.2.0
+
+-Download and import the unitypackage file, and run the jar resolver.
+
+-Once the resolver has run, go to the top left corner, select Assets >Google Mobile Ads >Settings.
+
+-A settings window will open in the inspector, check on the Google AdMob enabled box only, and enter the app ID as  provided(if not provided at that time, don't worry, they will be given to you).
+
+*STEP 3 - Make a gameanalytics acoount, you will be given access to your game shortly after. then to set it up, go to the top left toolbar, select Window>GameAnalytics>Select settings.
+
+-The game analytics window will open in the inspector, log in to your account and select your game.
+
+That's pretty much it for the pre requisites. You can now proceed for further implementation.
+
+==== PART 1 - CROSS PROMO AND SPLASH SCREEN ====
+
+This part covers the implementation of the cross promo plugin and the splash screen.
+*STEP 1 - Go to the main NAGamesBranding folder, from there go to Scenes>NAGamesSampleScene
+
+*STEP 2 - Open up the scene, and make sure to add it as the FIRST SCENE inside your scenes in build, ie. add it in as the scene with scene index zero. To do so, open up File>Build Settings , and drag and drop the scene as the first scene. NOTE - If you load scenes inside the game using build index, change it accordingly, else it would give errors.
+If you load scenes using scene name, no issues then. 
+
+*STEP 3 - As you play the scene(and make sure your system is connected to the internet for this to work), you would notice that a button is activated after sometime. This is the More games button.
+To change the more games button sprite to your liking, go to the hierarchy, and then select the NagSDK object. Then, select the child object MoreGames. There is a script there called Load Ads, where you can change the button sprite under the More Game Img field. 
+
+*STEP 4 - You can customise the position of the button itself, just go to the hierarchy, select the NA_Games_Canvas, then select the child object MoreGameBtn. This holds the ad button itself. To fix the button in a given position, just uncheck the bubble movement parameter. You can customise the button position etc. according to your liking, but make sure that the button is NOT ACTIVE while entering play mode.
+
+*STEP 5 - Now for the splash screen, just replace your studio / organisation logo inside the DeveloperLogo object in the hierarchy.
+
+*STEP 6 - Now that the scene is set up, you can load to your menu scene by selecting the SplashCanvas inside the hierarchy, and putting in your menu scene name inside the Next Scene Name field (in the NA Splash Load Next script attached).
+
+*STEP 7 - The scenes contain DontDestroyOnLoad Objects, so NEVER LOAD THE NAGamesSample Scene AGAIN, after the game has started. All the objects holding gameanalytics, AdMob are inside the scene itself, and they are never destroyed during the entire play time.
+
+*STEP 8 - Now, taking the reference of the MoreGameBtn accordingly, you can enable or disable the button between the scenes as required. You can create a DontDestroyOnLoad object referencing the button, and compare if a particular scene is active or not, and enable or disable the button as per your liking.
+NOTE - The More Games Button MUST be shown in the main menu, and every time in the game over scene.
+
+*STEP 9 - For the removal of the standard unity splash screen, after the implementation is complete, the developer will be contacted shortly and given access to unity pro license, and will be guided accordingly.
+
+This pretty much covers it for the first part of the implementation.
+
+==== PART 2 - GAMEANALYTICS ====
+
+Making sure that the pre-requisite part for gameanalytics is done, you can proceed accordingly.
+Now, for those who haven't worked with gameanalytics earlier, here is a brief overview.
+Gameanalytics is basically a plugin for tracking in game progress of the user, and getting useful stats to improve your game by monitoring how the user proceeds in game.
+There are 3 main progression events inside gameanalytics, start, complete, and fail. Pretty self explanatory stuff, you call the start event every time when the game starts(not the whole game, the main game scene), fail event when 
+the user fails, and complete event when the user finishes the run (in case of endless game) / completes the level(in level based games). There is some pretty useful documentation on their site too, give it a read if you feel stuck at any point.
+NOTE - MAKE SURE YOU CALL THESE EVENTS ONLY ONCE DURING THE ENTIRE PLAYTHROUGH OF THE LEVEL ie, dont put any of these events in update, make sure they are called only once.
+Now for the implementation.
+
+Let's assume that inside the game scene, you have a GameManager script, (make sure that the script is called every time when the scene is reloaded)
+
+STEP 1 - In the headers make sure you include => using GameAnalyticsSDK
+
+STEP 2 - In the start function(or when the game starts), paste the following snippet
+
+GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "MyKeyName");
+
+Here, MyKeyName represents the data you need to monitor, for example if you want to track the user progress in a paticular level, you could write it as => GameAnalytics.NewProgressionEvent(GAProgressionStatus.Start, "Level");
+
+STEP 3 - If the user completes the level/run, paste the following snippet inside the required area(taking example of the previous key "Level")
+GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level");
+(you could track the level number too, as such => GameAnalytics.NewProgressionEvent(GAProgressionStatus.Complete, "Level", LevelNumber);
+where LevelNumber is an int containing the current level number.)
+AGAIN, MAKE SURE THAT THIS IS NOT CALLED REPEATEDLY INSIDE THE SCRIPT.
+
+STEP 4 - The fail events works pretty similarly to the complete event, just add in this snippet if the user fails the level
+GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level");
+(you could track the level number too, as such => GameAnalytics.NewProgressionEvent(GAProgressionStatus.Fail, "Level", LevelNumber);
+where LevelNumber is an int containing the current level number.)
+AGAIN, MAKE SURE THAT THIS IS NOT CALLED REPEATEDLY INSIDE THE SCRIPT.
+
+STEP 5 - That's it, now make sure that you save the script and start the game from the NA Games Sample Scene, you will see the gameanalytics events get printed in the console accordingly, whenever you have called them.
+
+NOTE - MAKE SURE THAT THE KEY NAMES ARE SAME WHENEVER CALLED, ie. if the start key is named "level", make sure that the complete/ fail key is also named as "level".
+
+That sums it up for the gameanalytics part.
+
+==== PART 3 - GOOGLE ADS ====
+
+NOTE - If you have any ad network pre - integrated in the project, contact us first.
+
+*Assuming you don't have any pre - installed ad frameworks in your project, here's how you proceed.
+
+STEP 1 - Let's divide this into 2 parts.
+1)Interstitial and Banner ads - These ads are pretty easy to call, we have have pre made methods with the necessary callbacks ready for you to use.
+
+*For showing the interstitial ad, use the method =>
+GoogleAdMobController.Instance.ShowInterstitialAd();
+This will show an interstitial ad every time when called.
+
+*Similarly, for showing the banner ad, use the method =>
+GoogleAdMobController.Instance.ShowBanner();
+This will show a banner ad every time when called.
+
+Also, the banner and the interstitial ads can be destroyed (if needed) by using 
+GoogleAdMobController.Instance.DestroyBannerAd();   (for destroying banner)
+GoogleAdMobController.Instance.DestroyInterstitialAd();    (for destroying interstitial)
+
+That's pretty much it for banner and interstitial ads.
+
+NOTE - Always try to show the ads, making sure that they don't obstruct the gameplay / give a bad experience to the user. The user wants to play the game, so make sure that the ads are shown outside gameplay or in the game over screen. Also, try to show ads every 4-5 times the game is played, so as to keep a good user experience, which would ultimately boost retention of your game. Don't show ads every time the game is over, this might irritate the user.
+
+2) Rewarded video ads =>
+The rewarded video ad implementation is also handled mostly by our scripts, you just have to call the methods accordingly
+
+Let's take an example in this case, to make things clearer. Read through the commented lines to understand. 
+
+//Call this when the reward button is clicked=>
+
+public void RewardbuttonClicked()
+    {
+        GoogleAdMobController.Instance.ShowRewardedAd(GiveReward, SkipButtonClicked);
+    }
+
+//This method fetches and loads the rewarded video.
+
+void CacheVideo()
+    {
+        GoogleAdMobController.Instance.RequestAndLoadRewardedAd();
+    }
+
+bool rewarded;
+
+//This is the main callback, when the user watches the full rewarded video 
+void GiveReward()
+    {
+        Debug.Log("Reward Given");
+        rewarded = true;
+        CacheVideo();
+        //Give the reward to the user here
+    }
+
+//If the user doesn't watch the full video/ skips the reward, call this function there
+public void SkipButtonClicked()
+    {
+        if (!rewarded)
+        {
+            Debug.Log("Reward video skipped");
+            CacheVideo();
+            //Do what to do if the user doesn't watch the rewarded video
+        }
+    }
+
+This sums it up for the rewarded video part.
+
+STEP 2 - Now that you have your ads in place, its time to check if they work properly or not. To check, go to the NAGamesSampleScene, and find the AdManager object in the hierarchy(its located as a child of the NagSDK object).
+Now, You'll notice that the GoogleAdMobController script is shown in the inspector panel, with 3 public fields, Banner View ID, Interstitial ID, Rewarded Ad ID.
+
+STEP 3 -  Now go to google, and search for "Google AdMob test ad ids". This will lead you to finding the test ad ids, just copy and paste the required test ids to the correct slots in the Google Ad Mob Controller scripts.
+
+STEP 4 - That's all. Just make a build of the project now, and test it on your required device to check if everything works properly or not.
+
+NOTE -  Make sure that you have the Google AdMob enabled box checked, in Assets >Google Mobile Ads >Settings.
+
+If you have made it this far, and everything seems to work, congratulations! You're now just one step farther to getting your game published. Contact the NA Games team after this for the further integration process.
+
+TIP - Before publishing, make sure that you save multiple backups of the KEYSTORE file and it's password. It's very crucial for updating the game.

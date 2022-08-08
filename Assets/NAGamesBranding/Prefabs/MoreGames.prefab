@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4516957899211660987
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4516957899211660964}
+  - component: {fileID: 742742268414965291}
+  m_Layer: 0
+  m_Name: MoreGames
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4516957899211660964
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4516957899211660987}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &742742268414965291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4516957899211660987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 981dd7085869de14aa46280ba9bc4f36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  adInfoRoot:
+    AdsInfo: []
+  adRoot: []
+  downloadCount: 0
+  AdJsonUrl: http://tellmenothing.com/NagSDK/adsJson.json
+  AdScroller: 1
+  MoreGame: {fileID: 21300000, guid: 7bca1b8d1ab813d4bba20a8a45b20051, type: 3}
+  AdScrollObj: {fileID: 0}
+  defaultImg: {fileID: 21300000, guid: 04d7c32edf7084a4f91df94cc30f085f, type: 3}
+  defaultGameName: RPS
+  defaultUrl: https://play.google.com/store/apps/details?id=gameeon.nagames.rockpaperscissor
+  AdVisible: {fileID: 0}

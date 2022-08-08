@@ -1,0 +1,53 @@
+no 0 Yash+Bhatt score = 712
+no 1 Zacattack score = 108
+no 2 James score = 62
+no 3 Ayush score = 54
+no 4 Sid score = 54
+no 5 Trinix score = 51
+no 6 Himanshu score = 39
+no 7 Rathaur score = 39
+no 8 Arees score = 30
+no 9 Bidit score = 27
+no 10 Annu score = 25
+no 11 Hema+Joshi score = 25
+no 12 Shivam score = 22
+no 13 Dishu score = 20
+no 14 Ashutosh score = 20
+no 15 Ekadeeprax score = 18
+no 16 Avika score = 18
+no 17 Cadet score = 17
+no 18 Shubham score = 16
+no 19 Bhuppi score = 16
+no 20 Rahul score = 15
+no 21 Vk score = 15
+no 22 Bum+Didgi score = 14
+no 23 Ashu score = 14
+no 24 Shit score = 14
+no 25 Zeroenixx score = 12
+no 26 Nightmare score = 11
+no 27 Randon+Girl score = 10
+no 28 Random+Boy score = 9
+no 29 S score = 9
+no 30 Pro score = 8
+no 31 Crabshat score = 8
+no 32 Noob score = 7
+no 33 gamer score = 6
+no 34 Kathu score = 6
+no 35 Pk score = 5
+no 36 Royal+King score = 5
+no 37 Havana score = 5
+no 38 Bot score = 4
+no 39 Sarmad score = 3
+no 40 Tech score = 3
+no 41 john score = 2
+no 42 start score = 1
+no 43 Ey score = 0
+no 44 yashbhatt score = 0
+no 45 Eypo score = 0
+no 46 Kushal score = 0
+no 47 Deepu score = 0
+
+UnityEngine.Debug:Log(Object)
+LeaderboardSrc:FormatHighscore(String) (at Assets/Scripts/LeaderboardSrc.cs:94)
+<DownloadHighScore>d__12:MoveNext() (at Assets/Scripts/LeaderboardSrc.cs:70)
+UnityEngine.SetupCoroutine:InvokeMoveNext(IEnumerator, IntPtr)
