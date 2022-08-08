@@ -19,3 +19,6 @@ Full of explosion, full of enthusiasm Bomber Inc. awaits for you.
 Published on google play store with 500+ downloads.
 [LINK](https://play.google.com/store/apps/details?id=com.TT.B)
 
+![img 2](https://play-lh.googleusercontent.com/MwoHKTx3UZbXYz2r3khRT83aryvES7GZ2OlqGA1hCe8OnkJnhN6RbjGoGoiKyR-9Mw=w526-h296-rw)
+
+![img 3](https://play-lh.googleusercontent.com/byn9reBMwwZAX1s2SEGCuIz5FtW7Ar4i4_DUUuXQYp8iuBK69AgRRM2bhJEP0HVZspM=w526-h296-rw)
